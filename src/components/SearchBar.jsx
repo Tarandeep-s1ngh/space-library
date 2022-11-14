@@ -20,7 +20,6 @@ export const SearchBar = ({ setMedia, setIsLoading }) => {
           }
           setIsLoading(false);
         } catch (error) {
-          setIsLoading(false);
           console.log(error.message);
         }
       })();
@@ -38,7 +37,7 @@ export const SearchBar = ({ setMedia, setIsLoading }) => {
         className="search-input"
         value={searchInput}
         onChange={(e) => {
-          setSearchInput(e.target.value);
+          setSearchInput(e.target.value.toLowerCase());
         }}
       />
     </div>

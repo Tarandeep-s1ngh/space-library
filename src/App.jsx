@@ -2,13 +2,18 @@ import { useState } from "react";
 import { Library, SearchBar } from "./components/";
 
 const withLoader = (isLoading) => (Component) => (props) => {
-  return isLoading ? <span className="loader"></span> : <Component {...props} />;
+  return isLoading ? (
+    <span className="loader"></span>
+  ) : (
+    <Component {...props} />
+  );
 };
 
 function App() {
   const [media, setMedia] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [currItem, setCurrItem] = useState({});
 
   const LibraryWithLoader = withLoader(isLoading)(Library);
 
@@ -22,7 +27,11 @@ function App() {
         media={media}
         showModal={showModal}
         setShowModal={setShowModal}
+        currItem={currItem}
+        setCurrItem={setCurrItem}
       />
+
+      {/* <Library media={media} showModal={showModal} setShowModal={setShowModal} /> */}
     </div>
   );
 }

@@ -1,9 +1,13 @@
-import React, { useState } from "react";
 import { MediaCard } from "./MediaCard";
 import { Modal } from "./Modal";
 
-export const Library = ({ media, showModal, setShowModal }) => {
-  const [currItem, setCurrItem] = useState({});
+export const Library = ({
+  media,
+  showModal,
+  setShowModal,
+  currItem,
+  setCurrItem,
+}) => {
   return media.length ? (
     <>
       <div className="media-layout">
