@@ -1,0 +1,46 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { API_ROOT } from "../utils/";
+
+export const SearchBar = ({ setMedia, setIsLoading }) => {
+  const [searchInput, setSearchInput] = useState("");
+
+  useEffect(() => {
+    if (searchInput !== "") {
+      (async () => {
+        try {
+          setIsLoading(true);
+          const res = await axios.get(`${API_ROOT}/search?q=${searchInput}`);
+          if (res.status === 200) {
+            if (res.data.collection.items.length < 1) {
+              console.log("No Data Found");
+            } else {
+              setMedia(res.data.collection?.items?.slice(0, 12));
+            }
+          }
+          setIsLoading(false);
+        } catch (error) {
+          setIsLoading(false);
+          console.log(error.message);
+        }
+      })();
+    } else {
+      setMedia([]);
+    }
+  }, [searchInput]);
+
+  return (
+    <div className="search-bar">
+      <i className="fa-brands fa-searchengin fa-lg search-icon"></i>
+      <input
+        type="input"
+        placeholder="Search for anything related to space! e.g. Black Hole | Galaxy | Apollo | Hubble | Milky Way"
+        className="search-input"
+        value={searchInput}
+        onChange={(e) => {
+          setSearchInput(e.target.value);
+        }}
+      />
+    </div>
+  );
+};
