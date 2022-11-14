@@ -21,20 +21,21 @@ function App() {
     <div className="App">
       {showModal ? <div className="overlay"></div> : null}
       <h1 id="title">Space Library</h1>
-      <Profiler
-      id="Searchbar"
-      onRender={(id, phase, actualDuration)=>console.log({id, phase, actualDuration})}
-      >
       <SearchBar setMedia={setMedia} setIsLoading={setIsLoading} />
+      <Profiler
+        id="Library"
+        onRender={(id, phase, actualDuration) =>
+          console.log({ id, phase, actualDuration })
+        }
+      >
+        <LibraryWithLoader
+          media={media}
+          showModal={showModal}
+          setShowModal={setShowModal}
+          currItem={currItem}
+          setCurrItem={setCurrItem}
+        />
       </Profiler>
-
-      <LibraryWithLoader
-        media={media}
-        showModal={showModal}
-        setShowModal={setShowModal}
-        currItem={currItem}
-        setCurrItem={setCurrItem}
-      />
     </div>
   );
 }

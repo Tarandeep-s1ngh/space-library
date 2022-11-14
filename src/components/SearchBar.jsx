@@ -6,22 +6,27 @@ export const SearchBar = ({ setMedia, setIsLoading }) => {
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
+    let timerId = "";
     if (searchInput !== "") {
-      (async () => {
-        try {
-          setIsLoading(true);
-          const res = await axios.get(`${API_ROOT}/search?q=${searchInput}`);
-          if (res.status === 200) {
-            setMedia(res.data.collection?.items?.slice(0, 12));
+      timerId = setTimeout(() => {
+        (async () => {
+          try {
+            setIsLoading(true);
+            const res = await axios.get(`${API_ROOT}/search?q=${searchInput}`);
+            if (res.status === 200) {
+              setMedia(res.data.collection?.items?.slice(0, 12));
+            }
+            setIsLoading(false);
+          } catch (error) {
+            console.log(error.message);
           }
-          setIsLoading(false);
-        } catch (error) {
-          console.log(error.message);
-        }
-      })();
+        })();
+      }, 2000);
     } else {
       setMedia([]);
     }
+
+    return () => clearTimeout(timerId);
   }, [searchInput]);
 
   return (

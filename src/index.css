@@ -83,6 +83,11 @@ body {
   text-overflow: ellipsis;
 }
 
+.card-title:hover {
+  cursor: pointer;
+  color: aquamarine;
+}
+
 .img {
   border-radius: 10px;
   object-fit: cover;
