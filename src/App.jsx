@@ -30,8 +30,6 @@ function App() {
         currItem={currItem}
         setCurrItem={setCurrItem}
       />
-
-      {/* <Library media={media} showModal={showModal} setShowModal={setShowModal} /> */}
     </div>
   );
 }

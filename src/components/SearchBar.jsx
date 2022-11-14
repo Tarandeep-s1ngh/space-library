@@ -12,11 +12,7 @@ export const SearchBar = ({ setMedia, setIsLoading }) => {
           setIsLoading(true);
           const res = await axios.get(`${API_ROOT}/search?q=${searchInput}`);
           if (res.status === 200) {
-            if (res.data.collection.items.length < 1) {
-              console.log("No Data Found");
-            } else {
-              setMedia(res.data.collection?.items?.slice(0, 12));
-            }
+            setMedia(res.data.collection?.items?.slice(0, 12));
           }
           setIsLoading(false);
         } catch (error) {

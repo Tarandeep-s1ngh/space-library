@@ -6,8 +6,9 @@ export const Library = ({
   showModal,
   setShowModal,
   currItem,
-  setCurrItem,
+  setCurrItem
 }) => {
+
   return media.length ? (
     <>
       <div className="media-layout">
