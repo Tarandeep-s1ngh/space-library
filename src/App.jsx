@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Profiler, useState } from "react";
 import { Library, SearchBar } from "./components/";
 
 const withLoader = (isLoading) => (Component) => (props) => {
@@ -21,7 +21,12 @@ function App() {
     <div className="App">
       {showModal ? <div className="overlay"></div> : null}
       <h1 id="title">Space Library</h1>
+      <Profiler
+      id="Searchbar"
+      onRender={(id, phase, actualDuration)=>console.log({id, phase, actualDuration})}
+      >
       <SearchBar setMedia={setMedia} setIsLoading={setIsLoading} />
+      </Profiler>
 
       <LibraryWithLoader
         media={media}
