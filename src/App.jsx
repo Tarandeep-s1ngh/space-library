@@ -13,12 +13,13 @@ function App() {
   const [media, setMedia] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isScrollable, setIsScrollable] = useState(true);
   const [currItem, setCurrItem] = useState({});
 
   const LibraryWithLoader = withLoader(isLoading)(Library);
 
   return (
-    <div className="App">
+    <div className={isScrollable ? "App" : "App noScroll"}>
       {showModal ? <div className="overlay"></div> : null}
       <h1 id="title">Space Library</h1>
       <SearchBar setMedia={setMedia} setIsLoading={setIsLoading} />
@@ -34,6 +35,7 @@ function App() {
           setShowModal={setShowModal}
           currItem={currItem}
           setCurrItem={setCurrItem}
+          setIsScrollable={setIsScrollable}
         />
       </Profiler>
     </div>

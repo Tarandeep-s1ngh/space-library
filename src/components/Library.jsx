@@ -6,9 +6,9 @@ export const Library = ({
   showModal,
   setShowModal,
   currItem,
-  setCurrItem
+  setCurrItem,
+  setIsScrollable,
 }) => {
-
   return media.length ? (
     <>
       <div className="media-layout">
@@ -25,7 +25,15 @@ export const Library = ({
       </div>
       {showModal ? (
         <Modal>
-          <div className="detail-modal">
+          <div
+            onMouseEnter={() => {
+              setIsScrollable(false);
+            }}
+            onMouseLeave={() => {
+              setIsScrollable(true);
+            }}
+            className="detail-modal"
+          >
             <div className="modal-header">
               <h2>{currItem?.data[0]?.title}</h2>
               <span onClick={() => setShowModal(false)}>

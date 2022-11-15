@@ -21,7 +21,7 @@ export const SearchBar = ({ setMedia, setIsLoading }) => {
             console.log(error.message);
           }
         })();
-      }, 2000);
+      }, 1500);
     } else {
       setMedia([]);
     }

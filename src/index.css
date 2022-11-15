@@ -161,6 +161,11 @@ body {
   z-index: 5;
 }
 
+.noScroll {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
 .loader {
   width: 88px;
   height: 88px;
