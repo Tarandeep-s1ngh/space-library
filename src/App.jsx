@@ -19,7 +19,10 @@ function App() {
   const LibraryWithLoader = withLoader(isLoading)(Library);
 
   return (
-    <div className={isScrollable ? "App" : "App noScroll"} onMouseEnter={()=>setIsScrollable(true)}>
+    <div
+      className={isScrollable ? "App" : "App noScroll"}
+      onMouseEnter={() => setIsScrollable(true)}
+    >
       {showModal ? <div className="overlay"></div> : null}
       <h1 id="title">Space Library</h1>
       <SearchBar setMedia={setMedia} setIsLoading={setIsLoading} />
